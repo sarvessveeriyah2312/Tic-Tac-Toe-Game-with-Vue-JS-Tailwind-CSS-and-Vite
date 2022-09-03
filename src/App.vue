@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed} from 'vue'
 
-
+//Boards
 const player = ref('X');
 const board = ref([
   ['', '', ''],
@@ -9,6 +9,7 @@ const board = ref([
   ['', '', ''],
 ])
 
+//Fucntion to decide the winner
 const CalculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
@@ -29,7 +30,7 @@ const CalculateWinner = (squares) => {
   }
   return null;
 }
-
+//Funtion to Make Move
   const winner = computed(() => CalculateWinner(board.value.flat()))
 
   const MakeMove = (x, y) => {
@@ -42,7 +43,7 @@ const CalculateWinner = (squares) => {
     player.value = player.value === 'X' ? 'O' : 'X'
   }
 
-
+//Function to reset the game starts here
   const ResetGame = () => {
     player.value = 'X'
     board.value = [
@@ -52,8 +53,11 @@ const CalculateWinner = (squares) => {
     ]
     player.value = 'X'
   }
+//Function to reset the game ends here
+
 </script>
 
+//Display the board
 <template>
    <main class="pt-8 text-center">
       <h1 class="mb-8 text-3x1 font-bold uppercase">Tic Tac Toe </h1>
